@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+<style>
+    /* Style for the body and container */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+form {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Style for the input and button in the form */
+label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+input[type="text"] {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+button#addTaskButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button#addTaskButton:hover {
+    background-color: #0056b3;
+}
+
+/* Style for the task list */
+
+ul#task-list {
+    list-style-type: none;
+    padding: 0;
+    
+    text-align: center;
+}
+
+li {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    
+}
+li span{
+    flex-grow: 1;
+    text-align: center;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #bb2d3b;
+}
+
+</style>
+<body>
+    <h1>To Do List</h1>
+    <form>
+        <label for="input">Enter a new Task:</label>
+        <input type="text" id="input" name="input">
+        <button id="addTaskButton">Add Task</button>
+    </form>
+    <ul id="task-list"></ul>
+    <script>
+        const form = document.querySelector('form');
+        const taskList = document.querySelector('#task-list');
+
+        function addTask(task) {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <input type="checkbox">
+                <span>${task}</span>
+                <button>Delete</button>
+            `;
+            taskList.appendChild(listItem);
+        }
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const input = document.querySelector('#input');
+            const task = input.value;
+            if (task.trim() !== '') {
+                addTask(task);
+                input.value = "";
+            }
+        });
+
+        taskList.addEventListener('click', (event) => {
+            if (event.target.tagName === 'BUTTON') {
+                const listItem = event.target.parentElement;
+                taskList.removeChild(listItem);
+            }
+        });
+    </script>
+</body>
+</html>

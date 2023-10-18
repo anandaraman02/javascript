@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+   <link rel="stylesheet" href="style.css">
+<body>
+    <div class="container">
+        <form name="myform" action="./todolist.html" onsubmit="return validateform()">
+            <h1>Login page</h1>
+            
+            <label for="username">Username or Email:</label>
+            <input type="text" id="username" name="username" >
+           
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" >
+        
+            <button type="submit" value="submit"> Login </button>
+        </form>
+        <p>Don't have an account? <a href="index.html">Sign up</a></p>
+    </div>
+    <script>
+        function validateform(){  
+var name=document.myform.username.value;  
+var password=document.myform.password.value;  
+  
+if (name==null || name==""){  
+  alert("Name can't be blank");  
+  return false;  
+}else if(password.length<6){  
+  alert("Password must be at least 6 characters long.");  
+  return false;  
+  }  
+}  
+    </script>
+</body>
+</html>
