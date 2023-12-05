@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="wrapper">
+    <h1>cm to inches</h1>
+    <div class="inputdiv">
+        <input type="text" id="input" placeholder="enter the number">
+    </div>
+    <div><!--we are using onclick fuction because iam clickng this button the will work -->
+        <button type="submit" onclick="convert()">Convert</button>
+    </div>
+    <div id="result">
+
+    </div>
+</div>
+    <script>
+        //this is the function
+        function convert(){
+            //first we receive input and store the value 
+            const value = Number(document.getElementById("input").value);
+            //this line the value will be cm to inches convert
+            const convertvalue = value/2.54;
+            //this line the output show area
+            const result=document.getElementById("result")
+            //tofixed we using only 3 decimal number show
+            result.innerHTML= convertvalue.toFixed(3) + "inches"
+        }
+    </script>
+</body>
+</html>
